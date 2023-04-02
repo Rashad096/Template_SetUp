@@ -1,0 +1,44 @@
+﻿@model HomeViewModels
+@{
+    ViewData["Title"] = "Index";
+}
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Team</h2>
+                <h3>Our Hardworking <span>Team</span></h3>
+                <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+            </div>
+
+            <div class="row">
+
+            @foreach (var member in Model.Members)
+            {
+                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                            <div class="member">
+                                <div class="member-img">
+                                    <img src="~/assets/img/team/@member.Image" class="img-fluid" alt="">
+                                    <div class="social">
+                                        <a href="">@Html.Raw(member.Icon1)</a>
+                                        <a href="">@Html.Raw(member.Icon2)</a>
+                                        <a href="">@Html.Raw(member.Icon3)</a>
+                                        <a href="">@Html.Raw(member.Icon4)</a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                            @*<h4><a href="@Url.Action("detail","team",new{id=member.Id})"> @member.FullName</a></h4>*@
+                            <h4><a asp-action="detail" asp-controller="team" asp-route-id="@member.Id">@member.FullName</a></h4>
+                                    <span>@member.Position</span>
+                                </div>
+                            </div>
+                        </div>
+
+            }
+
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
